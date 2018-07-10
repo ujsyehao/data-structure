@@ -32,9 +32,9 @@ class LinkedList {
     void display() {
       Node *tmp;
       tmp = head;
-	    if (!tmp) {
-		    std::cout << "empty linked list"; 
-	    }
+      if (!tmp) {
+        std::cout << "empty linked list"; 
+      }
       while (tmp) {
         std::cout << tmp -> data << " ";
         tmp = tmp -> next;
