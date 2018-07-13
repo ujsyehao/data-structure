@@ -11,13 +11,12 @@
 typedef struct {
   int data[MAXSIZE];
   int length;
-} Sequence_List;
+} SequenceList;
 
 int a[MAXSIZE];
 
-void create(Sequence_List &L) {
-  // initial length
-  L.length = 0;
+void create(SequenceList &L) {
+  L.length = 0;// initial length
   int value;
   int i = 0;
   while (std::cin >> value) {
@@ -27,20 +26,20 @@ void create(Sequence_List &L) {
   }
 }
 
-void display(Sequence_List &L) {
-  for (int i = 0; i < L.length; i++) {
+void display(SequenceList &L) {
+  for (int i = 0; i < L.length; ++i) {
     std::cout << L.data[i] << " ";
   }
   std::cout << std::endl;
   // test
-  //std::cout << L.length << std::endl;
+  std::cout << L.length << std::endl;
 }
 
-void insertion(Sequence_List &L, int position, int value) {
+void insertion(SequenceList &L, int position, int value) {
   if (L.length == 0) {
     std::cout << "can not insert a empty sequence_list, please use create() function first." << std::endl;
   } else if (position <= L.length) {     
-    for (int i = L.length; i >= position; i--) {
+    for (int i = L.length; i >= position; --i) {
       L.data[i] = L.data[i - 1];
     }
     L.data[position - 1] = value;
@@ -51,11 +50,11 @@ void insertion(Sequence_List &L, int position, int value) {
 
 }
 
-void deletion(Sequence_List &L, int position) {
+void deletion(SequenceList &L, int position) {
   if (L.length == 0) {
     std::cout << "can not delete a empty sequence_list, please use create() function first." << std::endl;
   } else if (position <= L.length) {
-    for (int i = position -1; i < L.length - 1; i++) {
+    for (int i = position -1; i < L.length - 1; ++i) {
       L.data[i] = L.data[i + 1];
     }
     L.length--;
@@ -65,7 +64,8 @@ void deletion(Sequence_List &L, int position) {
 }
 
 int main() {
-  Sequence_List a;
+  SequenceList a;
+  display(a);
   create(a);
   insertion(a, 1, 4);
   display(a);
